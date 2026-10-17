@@ -1,39 +1,1095 @@
 <!doctype html>
 <html lang="fa" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <title>ابزاراف | ابزار های کاربردی</title>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>ابزاراف | ابزار های کاربردی</title>
+  <meta name="description" content="ابزاراف؛ مجموعه‌ای از ابزارهای کاربردی آنلاین برای انجام سریع‌تر و آسان‌تر کارهای روزمره دیجیتال." />
+  <meta property="og:title" content="ابزاراف | ابزار های کاربردی" />
+  <meta property="og:description" content="ابزاراف؛ مجموعه‌ای از ابزارهای کاربردی آنلاین برای انجام سریع‌تر و آسان‌تر کارهای روزمره دیجیتال." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ابزاراف | ابزار های کاربردی" />
+  <meta name="twitter:description" content="ابزاراف؛ مجموعه‌ای از ابزارهای کاربردی آنلاین برای انجام سریع‌تر و آسان‌تر کارهای روزمره دیجیتال." />
+  <link rel="icon" type="image/png" href="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKXYbJ327nfx_ethUAmlw3HvIk81h8e09BHNPjqWBUk6re0A1JjnpIkVF7xq-19IWlWqRNBqgo3WEoM5aIAQikb9YcSgkD6fYjLoWiXjDG-U70Mm2Xx8oJ7oO-_WrBBf8yrP4Q-o0agzOBbZnizKofOghjLBHc3zvzLE9onSzD8-e8MR4aDb5qyQBKBCn2t05IhcbbsnnMDv-PzDi2jl7w8rOVTDHpqdNXkRM9vRYsY-Pxxgv1BEb" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Vazirmatn', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              dark: '#0b0d1b',
+              surface: '#101222',
+              card: '#181a2b',
+              border: '#262943',
+              accent: '#6366f1'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #0b0d1b;
+      color: #f3f4f6;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: #101222;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #262943;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col selection:bg-indigo-500/30 selection:text-indigo-200">
+
+  <!-- Header -->
+  <header class="sticky top-0 z-40 bg-[#101222]/90 backdrop-blur-md border-b border-[#262943]">
+    <div class="max-w-[1240px] mx-auto px-4 sm:px-6 py-3.5 flex items-center justify-between gap-4">
+      
+      <!-- Logo + Brand Name (Click to Home) -->
+      <a href="#" onclick="window.scrollTo({top:0, behavior:'smooth'}); return false;" class="flex items-center gap-3 group select-none cursor-pointer">
+        <div class="relative w-10 h-10 rounded-xl overflow-hidden border border-indigo-500/40 shadow-lg shadow-indigo-500/20 group-hover:border-indigo-400 group-hover:scale-105 transition-all">
+          <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKXYbJ327nfx_ethUAmlw3HvIk81h8e09BHNPjqWBUk6re0A1JjnpIkVF7xq-19IWlWqRNBqgo3WEoM5aIAQikb9YcSgkD6fYjLoWiXjDG-U70Mm2Xx8oJ7oO-_WrBBf8yrP4Q-o0agzOBbZnizKofOghjLBHc3zvzLE9onSzD8-e8MR4aDb5qyQBKBCn2t05IhcbbsnnMDv-PzDi2jl7w8rOVTDHpqdNXkRM9vRYsY-Pxxgv1BEb" alt="لوگوی ابزاراف" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex flex-col">
+          <span class="font-black text-lg sm:text-xl text-white tracking-tight group-hover:text-indigo-200 transition-colors">ابزاراف</span>
+          <span class="text-[11px] text-zinc-400 font-medium">ابزار های کاربردی</span>
+        </div>
+      </a>
+
+      <!-- Category Filter Pills -->
+      <nav class="hidden lg:flex items-center gap-1.5 text-xs sm:text-sm font-medium">
+        <button onclick="filterCategory('all', this)" class="cat-btn px-3.5 py-1.5 rounded-xl bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30 transition-all">همهٔ ابزارها</button>
+        <button onclick="filterCategory('image', this)" class="cat-btn px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white hover:bg-[#181a2b] transition-all">ابزارهای تصویر</button>
+        <button onclick="filterCategory('video-audio', this)" class="cat-btn px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white hover:bg-[#181a2b] transition-all">ویدیو و صوت</button>
+        <button onclick="filterCategory('document', this)" class="cat-btn px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white hover:bg-[#181a2b] transition-all">اسناد PDF</button>
+      </nav>
+
+      <!-- Badges and Actions -->
+      <div class="flex items-center gap-3">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs sm:text-sm font-semibold select-none">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+          </span>
+          <span>۱۰۰٪ کلاینت‌ساید و فعال</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-[1240px] w-full mx-auto px-4 sm:px-6 py-6 sm:py-8">
     
-    <!-- Meta & SEO for abzaraff.ir -->
-    <meta name="description" content="ابزاراف؛ مجموعه ابزارهای آنلاین و کاربردی تحت وب شامل فشرده‌سازی و تغییر اندازه عکس، ساخت و اسکن QR Code، استخراج و پردازش متن، مبدل واحدها، ابزارهای رمزنگاری و فایل به صورت سریع، ایمن و کلاینت‌ساید." />
-    <meta name="keywords" content="ابزاراف, ابزارهای کاربردی, تبدیل فرمت عکس, فشرده سازی تصویر, ساخت qr code, بارکد ساز, پردازش متن فارسی, ابزار آنلاین" />
-    <meta name="author" content="ابزاراف (abzaraff.ir)" />
-    <link rel="canonical" href="https://abzaraff.ir" />
+    <!-- Hero Section -->
+    <section class="text-center pt-6 pb-6 max-w-4xl mx-auto">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 border border-indigo-500/25 text-indigo-300 text-xs sm:text-sm font-semibold mb-5 shadow-sm">
+        <span>🛡️</span>
+        <span>بدون آپلود فایل به سرور · پردازش سریع و امن در مرورگر شما</span>
+      </div>
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white tracking-tight leading-[1.3] mb-4">
+        جعبه‌ابزار همه‌کاره و کاربردی دیجیتال
+      </h1>
+      <p class="text-zinc-400 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed mb-8">
+        ابزاراف؛ مجموعه‌ای از ابزارهای کاربردی آنلاین برای انجام سریع‌تر و آسان‌تر کارهای روزمره دیجیتال نظیر کاهش حجم عکس، تبدیل فرمت، تغییر سایز، ساخت QR Code، استخراج متن و فشرده‌سازی فایل‌ها.
+      </p>
 
-    <!-- Open Graph & Social Cards -->
-    <meta property="og:site_name" content="ابزاراف" />
-    <meta property="og:title" content="ابزاراف | ابزار های کاربردی" />
-    <meta property="og:description" content="مجموعه کامل ابزارهای آنلاین، سریع و کلاینت‌ساید تحت وب بدون نیاز به آپلود فایل به سرور." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://abzaraff.ir" />
-    <meta property="og:image" content="/logo.svg" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="ابزاراف | ابزار های کاربردی" />
-    <meta name="twitter:description" content="مجموعه کامل ابزارهای آنلاین، سریع و کلاینت‌ساید تحت وب بدون نیاز به آپلود فایل به سرور." />
-    <meta name="twitter:image" content="/logo.svg" />
+      <!-- Quick Search Bar -->
+      <div class="max-w-xl mx-auto relative px-2">
+        <div class="relative flex items-center">
+          <input
+            id="searchInput"
+            type="text"
+            oninput="handleSearch(this.value)"
+            placeholder="جستجوی ابزار… (مثلاً: کاهش حجم عکس، استخراج صوت، کیوآرکد)"
+            class="w-full bg-[#101222] border border-[#262943] hover:border-[#3b416e] focus:border-indigo-400 text-zinc-100 placeholder-zinc-500 text-sm sm:text-base rounded-2xl py-3.5 pr-12 pl-4 outline-none transition-all focus:ring-4 focus:ring-indigo-500/20 shadow-inner"
+          />
+          <div class="absolute right-4 text-indigo-400 pointer-events-none">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <!-- Favicon & Icons -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <!-- Tool Tabs Bar -->
+    <div class="w-full overflow-x-auto pb-2 custom-scroll my-6 border-b border-[#262943]">
+      <div class="flex items-center gap-2 min-w-max pb-2" id="toolTabs">
+        <button onclick="switchTool('image-compress')" id="tab-image-compress" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border bg-indigo-500 text-[#0b0d1b] border-indigo-400 shadow-lg shadow-indigo-500/25">
+          <span>🗜️</span><span>کاهش حجم عکس</span>
+        </button>
+        <button onclick="switchTool('image-resize')" id="tab-image-resize" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>📐</span><span>تغییر اندازه عکس</span>
+        </button>
+        <button onclick="switchTool('image-convert')" id="tab-image-convert" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>🔄</span><span>تبدیل فرمت عکس</span>
+        </button>
+        <button onclick="switchTool('qr-code')" id="tab-qr-code" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>▦</span><span>ساخت QR Code</span>
+        </button>
+        <button onclick="switchTool('image-ocr')" id="tab-image-ocr" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>🔤</span><span>استخراج متن (OCR)</span>
+        </button>
+        <button onclick="switchTool('video-compress')" id="tab-video-compress" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>🎬</span><span>کاهش حجم ویدیو</span>
+        </button>
+        <button onclick="switchTool('audio-extract')" id="tab-audio-extract" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>🎵</span><span>استخراج صدای ویدیو</span>
+        </button>
+        <button onclick="switchTool('pdf-compress')" id="tab-pdf-compress" class="tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]">
+          <span>📄</span><span>کاهش حجم PDF</span>
+        </button>
+      </div>
+    </div>
 
-    <!-- Fonts: Vazirmatn & JetBrains Mono -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  </head>
-  <body class="bg-[#0b0d1b] text-[#f3f4f6] min-h-screen selection:bg-purple-600/30 selection:text-purple-200 antialiased font-['Vazirmatn',sans-serif]">
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Active Tool Workspace -->
+    <div id="activeWorkspace" class="bg-[#101222] border border-[#262943] rounded-3xl p-6 sm:p-8 shadow-2xl mb-12">
+      
+      <!-- 1. Image Compressor Panel -->
+      <div id="panel-image-compress" class="tool-panel space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/5">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-2xl">🗜️</div>
+            <div>
+              <h2 class="text-xl font-extrabold text-white">کاهش حجم هوشمند عکس</h2>
+              <p class="text-xs sm:text-sm text-zinc-400">فشرده‌سازی تصاویر با فرمت‌های WebP، JPG و PNG با کنترل کیفیت و بدون افت وضوح</p>
+            </div>
+          </div>
+          <button onclick="resetImageCompressor()" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all flex items-center gap-2">
+            <span>بازنشانی</span>
+          </button>
+        </div>
+
+        <div id="dropzone-compress" onclick="document.getElementById('file-compress').click()" class="border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400 text-3xl mb-1 shadow-inner">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 13v8M4 14.9A7 7 0 1 1 15.7 8h1.8a4.5 4.5 0 0 1 2.5 8.2M8 17l4-4 4 4"/></svg>
+          </div>
+          <b class="text-base sm:text-lg text-white font-bold">تصویر خود را اینجا بکشید یا برای انتخاب کلیک کنید</b>
+          <small class="text-xs sm:text-sm text-zinc-400">پشتیبانی از JPG، PNG و WebP (پردازش ۱۰۰٪ درون مرورگر)</small>
+          <input type="file" id="file-compress" accept="image/*" class="hidden" onchange="handleCompressUpload(this.files[0])" />
+        </div>
+
+        <div id="controls-compress" class="hidden space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#181a2b] p-5 rounded-2xl border border-[#262943]">
+            <div class="flex flex-col gap-2">
+              <div class="flex justify-between text-xs font-semibold">
+                <span class="text-zinc-300">میزان کیفیت فشرده‌سازی:</span>
+                <span id="quality-val" class="text-indigo-400 font-bold">۷۵٪</span>
+              </div>
+              <input type="range" id="quality-slider" min="10" max="95" value="75" oninput="updateQuality(this.value)" class="w-full cursor-pointer h-2 bg-[#262943] rounded-lg accent-indigo-500">
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-semibold text-zinc-300">مقیاس ابعاد:</label>
+              <select id="scale-select" onchange="runCompression()" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none">
+                <option value="1">۱۰۰٪ (اندازه کامل)</option>
+                <option value="0.85">۸۵٪ اندازه اصلی</option>
+                <option value="0.7">۷۰٪ اندازه اصلی (کاهش فوق‌العاده)</option>
+                <option value="0.5">۵۰٪ اندازه اصلی</option>
+              </select>
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-xs font-semibold text-zinc-300">فرمت خروجی:</label>
+              <select id="format-select" onchange="runCompression()" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none">
+                <option value="image/webp">WebP (حداکثر فشرده‌سازی مدرن)</option>
+                <option value="image/jpeg">JPEG (سازگاری عمومی)</option>
+                <option value="image/png">PNG (حفظ شفافیت)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-[#181a2b] border border-[#262943] rounded-2xl overflow-hidden flex flex-col">
+              <div class="px-4 py-2.5 bg-black/20 border-b border-[#262943] flex justify-between text-xs font-semibold text-zinc-300">
+                <span>تصویر اولیه</span>
+                <span id="orig-size-label" class="text-zinc-400">-</span>
+              </div>
+              <div class="p-4 bg-[#090a14] min-h-[220px] flex items-center justify-center">
+                <img id="img-orig-preview" class="max-h-[220px] max-w-full object-contain rounded-lg" />
+              </div>
+            </div>
+            <div class="bg-[#181a2b] border border-[#262943] rounded-2xl overflow-hidden flex flex-col">
+              <div class="px-4 py-2.5 bg-black/20 border-b border-[#262943] flex justify-between text-xs font-semibold text-zinc-300">
+                <span>پیش‌نمایش فشرده‌شده</span>
+                <span id="comp-size-label" class="text-emerald-400 font-bold">-</span>
+              </div>
+              <div class="p-4 bg-[#090a14] min-h-[220px] flex items-center justify-center">
+                <img id="img-comp-preview" class="max-h-[220px] max-w-full object-contain rounded-lg" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <button onclick="downloadCompressed()" class="flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-500 to-indigo-600 hover:from-indigo-400 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-indigo-600/30 transition-all">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 15V3M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5"/></svg>
+              <span>دانلود تصویر بهینه‌شده</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. QR Code Generator Panel -->
+      <div id="panel-qr-code" class="tool-panel hidden space-y-6">
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-white/5">
+          <div class="flex items-center gap-3.5">
+            <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-400 text-2xl">▦</div>
+            <div>
+              <h2 class="text-xl font-extrabold text-white">ساخت QR Code آنلاین و اختصاصی</h2>
+              <p class="text-xs sm:text-sm text-zinc-400">تولید سریع بارکد دو بعدی استاندارد برای انواع آدرس، شماره تماس و متون فارسی</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-[#181a2b] p-5 rounded-2xl border border-[#262943]">
+          <div class="col-span-1 md:col-span-3">
+            <label class="block text-xs font-semibold text-zinc-300 mb-1.5">متن یا لینک مقصد:</label>
+            <input type="text" id="qr-text" value="https://abzaraf.ir" oninput="generateQR()" class="w-full bg-[#101222] border border-[#262943] text-zinc-200 text-sm rounded-xl px-4 py-2.5 outline-none focus:border-indigo-400" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-zinc-300 mb-1.5">رنگ کدهای QR:</label>
+            <input type="color" id="qr-color-dark" value="#000000" onchange="generateQR()" class="w-12 h-10 rounded-xl cursor-pointer bg-transparent border-0" />
+          </div>
+          <div>
+            <label class="block text-xs font-semibold text-zinc-300 mb-1.5">رنگ پس‌زمینه:</label>
+            <input type="color" id="qr-color-light" value="#ffffff" onchange="generateQR()" class="w-12 h-10 rounded-xl cursor-pointer bg-transparent border-0" />
+          </div>
+          <div class="flex items-end">
+            <button onclick="downloadQR()" class="w-full py-2.5 px-4 rounded-xl bg-indigo-500 hover:bg-indigo-400 text-white font-bold text-xs sm:text-sm transition-all shadow-md">
+              دانلود تصویر QR Code (PNG)
+            </button>
+          </div>
+        </div>
+
+        <div class="flex justify-center p-6 bg-[#181a2b] border border-[#262943] rounded-2xl">
+          <div class="p-4 bg-white rounded-2xl shadow-xl flex items-center justify-center">
+            <canvas id="qr-canvas" width="240" height="240"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <div id="panel-image-resize" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div><h2 class="text-xl font-bold text-white">تغییر سایز عکس</h2><p class="text-xs sm:text-sm text-zinc-400 mt-1">ابعاد دلخواه را به پیکسل یا درصد وارد کنید.</p></div>
+          <button onclick="resetTool('image-resize')" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dz-image-resize" data-input="in-image-resize" class="dz border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">📐</div>
+          <p class="text-sm font-bold text-zinc-200">فایل را اینجا رها کنید یا کلیک کنید</p>
+          <p id="name-image-resize" class="text-xs text-zinc-500"></p>
+          <input type="file" id="in-image-resize" accept="image/*" class="hidden" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap"><label class="text-xs sm:text-sm text-zinc-300 font-semibold">عرض:</label><input type="number" id="rs-w" min="1" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none w-24" /><label class="text-xs sm:text-sm text-zinc-300 font-semibold">ارتفاع:</label><input type="number" id="rs-h" min="1" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none w-24" /><label class="flex items-center gap-1 text-xs text-zinc-300"><input type="checkbox" id="rs-lock" checked class="accent-indigo-500" /> حفظ نسبت</label><label class="text-xs sm:text-sm text-zinc-300 font-semibold">درصد:</label><select id="rs-pct" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none"><option value="">دلخواه</option><option>25</option><option>50</option><option>75</option><option>150</option><option>200</option></select><button id="go-image-resize" disabled class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">اعمال</button></div>
+        <div id="prog-image-resize" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="st-image-resize"></span><span id="pc-image-resize"></span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="bar-image-resize" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="res-image-resize" class="hidden space-y-4"><div class="bg-[#14162a] border border-[#262943] rounded-2xl p-4 flex items-center justify-center min-h-[200px]"><img id="out-image-resize" class="max-h-[320px] max-w-full object-contain rounded-lg" /></div>
+          <div class="flex items-center gap-3 flex-wrap"><span id="info-image-resize" class="text-sm text-emerald-400 font-bold"></span>
+          <button id="dl-image-resize" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">⬇️ دانلود</button></div>
+        </div>
+      </div>
+      <div id="panel-image-convert" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div><h2 class="text-xl font-bold text-white">تبدیل فرمت عکس</h2><p class="text-xs sm:text-sm text-zinc-400 mt-1">تبدیل بین JPG، PNG و WEBP.</p></div>
+          <button onclick="resetTool('image-convert')" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dz-image-convert" data-input="in-image-convert" class="dz border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">🔄</div>
+          <p class="text-sm font-bold text-zinc-200">فایل را اینجا رها کنید یا کلیک کنید</p>
+          <p id="name-image-convert" class="text-xs text-zinc-500"></p>
+          <input type="file" id="in-image-convert" accept="image/*" class="hidden" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap"><label class="text-xs sm:text-sm text-zinc-300 font-semibold">فرمت خروجی:</label><select id="cv-fmt" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none"><option value="image/jpeg">JPG</option><option value="image/png">PNG</option><option value="image/webp">WEBP</option></select><label class="text-xs sm:text-sm text-zinc-300 font-semibold">کیفیت:</label><input type="range" id="cv-q" min="10" max="100" value="92" class="accent-indigo-500" /><button id="go-image-convert" disabled class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">تبدیل</button></div>
+        <div id="prog-image-convert" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="st-image-convert"></span><span id="pc-image-convert"></span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="bar-image-convert" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="res-image-convert" class="hidden space-y-4"><div class="bg-[#14162a] border border-[#262943] rounded-2xl p-4 flex items-center justify-center min-h-[200px]"><img id="out-image-convert" class="max-h-[320px] max-w-full object-contain rounded-lg" /></div>
+          <div class="flex items-center gap-3 flex-wrap"><span id="info-image-convert" class="text-sm text-emerald-400 font-bold"></span>
+          <button id="dl-image-convert" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">⬇️ دانلود</button></div>
+        </div>
+      </div>
+      <div id="panel-video-compress" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div><h2 class="text-xl font-bold text-white">کاهش حجم ویدیو</h2><p class="text-xs sm:text-sm text-zinc-400 mt-1">ویدیو داخل مرورگر با بیت‌ریت پایین‌تر دوباره ضبط می‌شود (خروجی WEBM). زمان پردازش برابر با طول ویدیو است.</p></div>
+          <button onclick="resetTool('video-compress')" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dz-video-compress" data-input="in-video-compress" class="dz border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">🎬</div>
+          <p class="text-sm font-bold text-zinc-200">فایل را اینجا رها کنید یا کلیک کنید</p>
+          <p id="name-video-compress" class="text-xs text-zinc-500"></p>
+          <input type="file" id="in-video-compress" accept="video/*" class="hidden" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap"><label class="text-xs sm:text-sm text-zinc-300 font-semibold">کیفیت:</label><select id="vc-br" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none"><option value="400000">کم (حجم خیلی کم)</option><option value="1000000" selected>متوسط</option><option value="2500000">خوب</option></select><label class="text-xs sm:text-sm text-zinc-300 font-semibold">حداکثر عرض:</label><select id="vc-w" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none"><option value="0">اصلی</option><option value="1280">1280</option><option value="854" selected>854</option><option value="640">640</option></select><button id="go-video-compress" disabled class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">شروع</button></div>
+        <div id="prog-video-compress" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="st-video-compress"></span><span id="pc-video-compress"></span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="bar-video-compress" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="res-video-compress" class="hidden space-y-4"><video id="out-video-compress" controls class="max-h-[320px] max-w-full rounded-lg bg-black"></video>
+          <div class="flex items-center gap-3 flex-wrap"><span id="info-video-compress" class="text-sm text-emerald-400 font-bold"></span>
+          <button id="dl-video-compress" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">⬇️ دانلود</button></div>
+        </div>
+      </div>
+      <div id="panel-audio-extract" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div><h2 class="text-xl font-bold text-white">استخراج صدای ویدیو</h2><p class="text-xs sm:text-sm text-zinc-400 mt-1">صدای ویدیو به فایل WAV تبدیل می‌شود.</p></div>
+          <button onclick="resetTool('audio-extract')" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dz-audio-extract" data-input="in-audio-extract" class="dz border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">🎵</div>
+          <p class="text-sm font-bold text-zinc-200">فایل را اینجا رها کنید یا کلیک کنید</p>
+          <p id="name-audio-extract" class="text-xs text-zinc-500"></p>
+          <input type="file" id="in-audio-extract" accept="video/*,audio/*" class="hidden" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap"><button id="go-audio-extract" disabled class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">استخراج صدا</button></div>
+        <div id="prog-audio-extract" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="st-audio-extract"></span><span id="pc-audio-extract"></span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="bar-audio-extract" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="res-audio-extract" class="hidden space-y-4"><audio id="out-audio-extract" controls class="w-full"></audio>
+          <div class="flex items-center gap-3 flex-wrap"><span id="info-audio-extract" class="text-sm text-emerald-400 font-bold"></span>
+          <button id="dl-audio-extract" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">⬇️ دانلود</button></div>
+        </div>
+      </div>
+      <div id="panel-pdf-compress" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div><h2 class="text-xl font-bold text-white">کاهش حجم PDF</h2><p class="text-xs sm:text-sm text-zinc-400 mt-1">صفحات با کیفیت انتخابی فشرده می‌شوند. توجه: متن PDF خروجی قابل انتخاب نخواهد بود.</p></div>
+          <button onclick="resetTool('pdf-compress')" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dz-pdf-compress" data-input="in-pdf-compress" class="dz border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">📄</div>
+          <p class="text-sm font-bold text-zinc-200">فایل را اینجا رها کنید یا کلیک کنید</p>
+          <p id="name-pdf-compress" class="text-xs text-zinc-500"></p>
+          <input type="file" id="in-pdf-compress" accept="application/pdf" class="hidden" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap"><label class="text-xs sm:text-sm text-zinc-300 font-semibold">کیفیت:</label><select id="pc-q" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none"><option value="0.4|1">زیاد (حجم کمتر)</option><option value="0.6|1.5" selected>متوسط</option><option value="0.8|2">کم (کیفیت بهتر)</option></select><button id="go-pdf-compress" disabled class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">فشرده‌سازی</button></div>
+        <div id="prog-pdf-compress" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="st-pdf-compress"></span><span id="pc-pdf-compress"></span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="bar-pdf-compress" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="res-pdf-compress" class="hidden space-y-4">
+          <div class="flex items-center gap-3 flex-wrap"><span id="info-pdf-compress" class="text-sm text-emerald-400 font-bold"></span>
+          <button id="dl-pdf-compress" class="px-5 py-2.5 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">⬇️ دانلود</button></div>
+        </div>
+      </div>
+      <!-- OCR Panel -->
+      <div id="panel-image-ocr" class="tool-panel hidden space-y-6">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+          <div>
+            <h2 class="text-xl font-bold text-white">استخراج متن از عکس (OCR)</h2>
+            <p class="text-xs sm:text-sm text-zinc-400 mt-1">پردازش کاملاً داخل مرورگر شما؛ پشتیبانی از فارسی و انگلیسی.</p>
+          </div>
+          <button onclick="resetOCR()" class="px-3.5 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200 transition-all">پاک کردن</button>
+        </div>
+        <div id="dropzone-ocr" onclick="document.getElementById('file-ocr').click()" class="border-2 border-dashed border-indigo-500/30 hover:border-indigo-400/80 bg-[#14162a]/60 hover:bg-[#181a2e] rounded-2xl p-8 sm:p-12 text-center cursor-pointer transition-all flex flex-col items-center justify-center gap-3">
+          <div class="text-4xl">🔤</div>
+          <p class="text-sm font-bold text-zinc-200">عکس را اینجا رها کنید، کلیک کنید یا Ctrl+V بزنید</p>
+          <p class="text-xs text-zinc-500">JPG، PNG، WEBP</p>
+          <input type="file" id="file-ocr" accept="image/*" class="hidden" onchange="handleOCRUpload(this.files[0])" />
+        </div>
+        <div class="flex items-center gap-3 flex-wrap">
+          <label class="text-xs sm:text-sm text-zinc-300 font-semibold">زبان متن:</label>
+          <select id="ocr-lang" class="bg-[#101222] border border-[#262943] text-zinc-200 text-xs sm:text-sm rounded-xl px-3 py-2 outline-none">
+            <option value="fas+eng">فارسی + انگلیسی</option>
+            <option value="fas">فارسی</option>
+            <option value="eng">انگلیسی</option>
+            <option value="ara">عربی</option>
+          </select>
+          <button id="ocr-run-btn" onclick="runOCR()" disabled class="px-5 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-400 disabled:opacity-40 disabled:cursor-not-allowed text-white font-bold text-xs sm:text-sm transition-all">شروع استخراج</button>
+        </div>
+        <div id="ocr-progress-wrap" class="hidden space-y-2">
+          <div class="flex justify-between text-xs text-zinc-400"><span id="ocr-status">در حال آماده‌سازی…</span><span id="ocr-percent">۰٪</span></div>
+          <div class="w-full h-2 bg-[#262943] rounded-full overflow-hidden"><div id="ocr-bar" class="h-full bg-indigo-500 transition-all" style="width:0%"></div></div>
+        </div>
+        <div id="ocr-result-wrap" class="hidden grid grid-cols-1 lg:grid-cols-2 gap-5">
+          <div class="bg-[#14162a] border border-[#262943] rounded-2xl p-4 flex items-center justify-center min-h-[240px]">
+            <img id="ocr-preview" class="max-h-[360px] max-w-full object-contain rounded-lg" />
+          </div>
+          <div class="flex flex-col gap-3">
+            <textarea id="ocr-output" dir="auto" rows="12" placeholder="متن استخراج‌شده اینجا نمایش داده می‌شود…" class="w-full flex-1 bg-[#101222] border border-[#262943] text-zinc-100 text-sm leading-7 rounded-xl p-4 outline-none focus:border-indigo-400 resize-y"></textarea>
+            <div class="flex gap-2 flex-wrap">
+              <button onclick="copyOCR()" id="ocr-copy-btn" class="px-4 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200">📋 کپی متن</button>
+              <button onclick="downloadOCR()" class="px-4 py-2 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200">⬇️ دانلود TXT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Placeholder / Active View for other panels -->
+      <div id="panel-generic" class="tool-panel hidden space-y-4 text-center py-12">
+        <div id="generic-icon" class="text-4xl mb-2">✦</div>
+        <h3 id="generic-title" class="text-xl font-bold text-white">ابزار انتخاب‌شده</h3>
+        <p id="generic-desc" class="text-sm text-zinc-400 max-w-md mx-auto leading-relaxed">این ابزار در این نسخه فعال است و پردازش آن به صورت کامل درون مرورگر شما انجام می‌شود.</p>
+        <div class="pt-4">
+          <button onclick="switchTool('image-compress')" class="px-5 py-2.5 rounded-xl bg-[#262943] hover:bg-[#323659] text-xs font-semibold text-zinc-200">
+            بازگشت به کاهش حجم عکس
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Catalog of All Tools -->
+    <section class="pt-4">
+      <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 mb-8">
+        <div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">کاتالوگ ابزارهای کاربردی ابزاراف</h2>
+          <p class="text-zinc-400 text-sm sm:text-base mt-1">با کلیک بر روی هر کارت، ابزار مورد نظر بلافاصله در کادر بالا بارگذاری می‌شود.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5" id="toolsGrid">
+        
+        <!-- Card 1 -->
+        <div onclick="switchTool('image-compress')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="image" data-title="کاهش حجم عکس">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">🗜️</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">کاهش حجم عکس</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">فشرده‌سازی تا ۹۰٪ بدون افت کیفیت بصری با پشتیبانی از فرمت‌های WebP و JPG</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div onclick="switchTool('image-resize')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="image" data-title="تغییر اندازه و برش عکس">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">📐</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">تغییر اندازه و برش عکس</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">تنظیم دقیق پیکسل‌های عکس با پریست‌های اینستاگرام، استوری و یوتیوب</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div onclick="switchTool('image-convert')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="image" data-title="تبدیل فرمت عکس">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">🔄</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">تبدیل فرمت عکس</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">تبدیل فوری بین فرمت‌های WebP، PNG و JPG با حفظ شفافیت و رنگ‌ها</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 4 -->
+        <div onclick="switchTool('qr-code')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="image" data-title="ساخت QR Code اختصاصی">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">▦</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">ساخت QR Code اختصاصی</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">تولید بارکدهای دو بعدی استاندارد با پشتیبانی از حروف فارسی و تنظیم رنگ</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div onclick="switchTool('image-ocr')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="document" data-title="استخراج متن از عکس OCR">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">🔤</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">استخراج متن از عکس (OCR)</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">تبدیل عکس‌های فاکتور و متون کتاب به فایل متنی با قابلیت کپی سریع</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div onclick="switchTool('video-compress')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="video-audio" data-title="کاهش حجم ویدیو">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">🎬</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">کاهش حجم ویدیو</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">فشرده‌سازی کلیپ‌ها در رم مرورگر بدون نیاز به آپلود و اتلاف حجم اینترنت</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div onclick="switchTool('audio-extract')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="video-audio" data-title="استخراج صدای ویدیو">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">🎵</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">استخراج صدای ویدیو</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">تبدیل سریع ویدیو به فایل صوتی استودیویی بدون افت بیت‌ریت</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div onclick="switchTool('pdf-compress')" class="tool-card group bg-[#101222] hover:bg-[#181a2b] border border-[#262943] hover:border-indigo-500/50 rounded-2xl p-6 transition-all duration-200 hover:-translate-y-1 hover:shadow-xl hover:shadow-indigo-500/10 cursor-pointer flex flex-col justify-between" data-category="document" data-title="کاهش حجم سند PDF">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-500/10 group-hover:bg-indigo-500/20 text-indigo-400 text-2xl flex items-center justify-center transition-colors">📄</div>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-400 text-xs font-semibold">فعال</span>
+            </div>
+            <h3 class="text-base sm:text-lg font-bold text-white mb-2 group-hover:text-indigo-200 transition-colors">کاهش حجم سند PDF</h3>
+            <p class="text-zinc-400 text-xs sm:text-sm leading-relaxed mb-6">بهینه‌سازی حجم جزوات و کتاب‌ها جهت ارسال آسان در اتوماسیون و ایمیل</p>
+          </div>
+          <div class="flex items-center gap-1.5 text-xs sm:text-sm font-bold text-indigo-400 group-hover:text-indigo-300">
+            <span>اجرای ابزار</span>
+            <span>←</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Info & Privacy Section -->
+    <section class="my-16 bg-[#101222] border border-[#262943] rounded-3xl p-6 sm:p-10">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 text-xl font-bold">🛡️</div>
+          <div>
+            <h4 class="text-base font-bold text-white mb-1.5">حریم خصوصی ۱۰۰٪ (بدون آپلود)</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">تمامی پردازش‌های تبدیل و فشرده‌سازی در رم دستگاه شما انجام می‌شود و هیچ فایلی به سرور خارجی ارسال نمی‌گردد.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 text-xl font-bold">⚡</div>
+          <div>
+            <h4 class="text-base font-bold text-white mb-1.5">سرعت فوق‌العاده و بدون انتظار</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">بدون معطلی در صف‌های سرور و بدون نیاز به آپلود فایل‌های حجیم؛ عملیات در کسری از ثانیه انجام می‌گیرد.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 text-xl font-bold">💎</div>
+          <div>
+            <h4 class="text-base font-bold text-white mb-1.5">رایگان، بدون ثبت‌نام و بدون واترمارک</h4>
+            <p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">تمامی امکانات به صورت آزاد و بدون درج هیچ‌گونه نشان و تبلیغ اضافه روی فایل‌های خروجی در خدمت شماست.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="mt-auto border-t border-[#262943] bg-[#101222]/80 backdrop-blur-sm py-8 px-4 sm:px-6 text-zinc-500 text-xs sm:text-sm">
+    <div class="max-w-[1240px] mx-auto flex flex-col md:flex-row items-center justify-between gap-5 text-center md:text-right">
+      <div class="flex items-center gap-3 text-zinc-400">
+        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyKXYbJ327nfx_ethUAmlw3HvIk81h8e09BHNPjqWBUk6re0A1JjnpIkVF7xq-19IWlWqRNBqgo3WEoM5aIAQikb9YcSgkD6fYjLoWiXjDG-U70Mm2Xx8oJ7oO-_WrBBf8yrP4Q-o0agzOBbZnizKofOghjLBHc3zvzLE9onSzD8-e8MR4aDb5qyQBKBCn2t05IhcbbsnnMDv-PzDi2jl7w8rOVTDHpqdNXkRM9vRYsY-Pxxgv1BEb" alt="ابزاراف" class="w-7 h-7 rounded-lg border border-indigo-500/30 object-cover" />
+        <span class="text-indigo-400 font-bold">ابزاراف | ابزار های کاربردی</span>
+        <span class="hidden sm:inline text-zinc-600">|</span>
+        <span class="text-xs text-zinc-400">سامانهٔ ۱۰۰٪ کلاینت‌ساید و پردازش درون‌مرورگری برای انجام کارهای روزمره دیجیتال</span>
+      </div>
+      <div class="text-xs text-zinc-500">
+        تمامی حقوق برای «ابزاراف» محفوظ است.
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts for Client Interactivity -->
+  <script>
+    let currentOrigFile = null;
+    let currentOrigImg = null;
+    let currentCompBlob = null;
+
+    function formatBytes(bytes) {
+      if (bytes === 0) return '۰ بایت';
+      const k = 1024;
+      const sizes = ['بایت', 'کیلوبایت', 'مگابایت', 'گیگابایت'];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return (bytes / Math.pow(k, i)).toFixed(1) + ' ' + sizes[i];
+    }
+
+    function switchTool(toolId) {
+      document.querySelectorAll('.tool-tab').forEach(el => {
+        el.className = 'tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold border border-transparent text-zinc-400 hover:text-white hover:bg-[#181a2b]';
+      });
+      const activeTab = document.getElementById('tab-' + toolId);
+      if (activeTab) {
+        activeTab.className = 'tool-tab flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-bold border bg-indigo-500 text-[#0b0d1b] border-indigo-400 shadow-lg shadow-indigo-500/25';
+      }
+
+      document.querySelectorAll('.tool-panel').forEach(p => p.classList.add('hidden'));
+
+      if (toolId === 'image-compress') {
+        document.getElementById('panel-image-compress').classList.remove('hidden');
+      } else if (toolId === 'qr-code') {
+        document.getElementById('panel-qr-code').classList.remove('hidden');
+        generateQR();
+      } else if (toolId !== 'image-ocr' && document.getElementById('panel-' + toolId)) {
+        document.getElementById('panel-' + toolId).classList.remove('hidden');
+      } else if (toolId === 'image-ocr') {
+        document.getElementById('panel-image-ocr').classList.remove('hidden');
+      } else {
+        const genPanel = document.getElementById('panel-generic');
+        genPanel.classList.remove('hidden');
+        const card = document.querySelector(`.tool-card[onclick*="${toolId}"]`);
+        if (card) {
+          document.getElementById('generic-icon').innerText = card.querySelector('.text-2xl').innerText;
+          document.getElementById('generic-title').innerText = card.querySelector('h3').innerText;
+          document.getElementById('generic-desc').innerText = card.querySelector('p').innerText;
+        }
+      }
+
+      const workspace = document.getElementById('activeWorkspace');
+      if (workspace) {
+        workspace.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    function filterCategory(cat, btn) {
+      document.querySelectorAll('.cat-btn').forEach(b => {
+        b.className = 'cat-btn px-3.5 py-1.5 rounded-xl text-zinc-400 hover:text-white hover:bg-[#181a2b] transition-all';
+      });
+      btn.className = 'cat-btn px-3.5 py-1.5 rounded-xl bg-indigo-500/20 text-indigo-300 font-bold border border-indigo-500/30 transition-all';
+
+      document.querySelectorAll('.tool-card').forEach(card => {
+        if (cat === 'all' || card.dataset.category === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    function handleSearch(query) {
+      const q = query.trim().toLowerCase();
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const title = card.dataset.title.toLowerCase();
+        const desc = card.querySelector('p').innerText.toLowerCase();
+        if (title.includes(q) || desc.includes(q)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Image Compressor Logic
+    function handleCompressUpload(file) {
+      if (!file) return;
+      currentOrigFile = file;
+      document.getElementById('orig-size-label').innerText = formatBytes(file.size);
+      
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          currentOrigImg = img;
+          document.getElementById('img-orig-preview').src = e.target.result;
+          document.getElementById('dropzone-compress').classList.add('hidden');
+          document.getElementById('controls-compress').classList.remove('hidden');
+          runCompression();
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function updateQuality(val) {
+      document.getElementById('quality-val').innerText = val + '٪';
+      runCompression();
+    }
+
+    function runCompression() {
+      if (!currentOrigImg) return;
+      const q = parseInt(document.getElementById('quality-slider').value, 10) / 100;
+      const scale = parseFloat(document.getElementById('scale-select').value);
+      const mime = document.getElementById('format-select').value;
+
+      const canvas = document.createElement('canvas');
+      const w = Math.max(1, Math.round(currentOrigImg.naturalWidth * scale));
+      const h = Math.max(1, Math.round(currentOrigImg.naturalHeight * scale));
+      canvas.width = w;
+      canvas.height = h;
+
+      const ctx = canvas.getContext('2d');
+      if (mime === 'image/jpeg') {
+        ctx.fillStyle = '#ffffff';
+        ctx.fillRect(0, 0, w, h);
+      }
+      ctx.drawImage(currentOrigImg, 0, 0, w, h);
+
+      canvas.toBlob(blob => {
+        if (!blob) return;
+        currentCompBlob = blob;
+        const url = URL.createObjectURL(blob);
+        document.getElementById('img-comp-preview').src = url;
+        const diff = Math.round((1 - blob.size / currentOrigFile.size) * 100);
+        const statusText = diff > 0 ? `${formatBytes(blob.size)} (${diff}٪ کاهش)` : formatBytes(blob.size);
+        document.getElementById('comp-size-label').innerText = statusText;
+      }, mime, q);
+    }
+
+    function downloadCompressed() {
+      if (!currentCompBlob || !currentOrigFile) return;
+      const mime = document.getElementById('format-select').value;
+      const ext = mime === 'image/webp' ? 'webp' : mime === 'image/png' ? 'png' : 'jpg';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(currentCompBlob);
+      a.download = `abzaraf-${currentOrigFile.name.replace(/\.[^/.]+$/, '')}-compressed.${ext}`;
+      a.click();
+    }
+
+    function resetImageCompressor() {
+      currentOrigFile = null;
+      currentOrigImg = null;
+      currentCompBlob = null;
+      document.getElementById('dropzone-compress').classList.remove('hidden');
+      document.getElementById('controls-compress').classList.add('hidden');
+      document.getElementById('file-compress').value = '';
+    }
+
+    // QR Code Canvas Simple Renderer
+    function generateQR() {
+      const canvas = document.getElementById('qr-canvas');
+      if (!canvas || !window.qrcode) return;
+      const ctx = canvas.getContext('2d');
+      const text = document.getElementById('qr-text').value || 'https://abzaraf.ir';
+      const dark = document.getElementById('qr-color-dark').value;
+      const light = document.getElementById('qr-color-light').value;
+      const qr = qrcode(0, 'M');
+      qr.addData(unescape(encodeURIComponent(text)));
+      try { qr.make(); } catch (e) { alert('متن برای کیوآرکد خیلی طولانی است.'); return; }
+      const n = qr.getModuleCount(), size = canvas.width, quiet = 2;
+      const cell = size / (n + quiet * 2);
+      ctx.fillStyle = light; ctx.fillRect(0, 0, size, size);
+      ctx.fillStyle = dark;
+      for (let r = 0; r < n; r++) for (let c = 0; c < n; c++)
+        if (qr.isDark(r, c)) ctx.fillRect(Math.floor((c + quiet) * cell), Math.floor((r + quiet) * cell), Math.ceil(cell), Math.ceil(cell));
+    }
+
+    function downloadQR() {
+      const canvas = document.getElementById('qr-canvas');
+      if (!canvas) return;
+      const a = document.createElement('a');
+      a.href = canvas.toDataURL('image/png');
+      a.download = 'abzaraf-qrcode.png';
+      a.click();
+    }
+
+    // ===== OCR Logic (Tesseract.js) =====
+    let ocrFile = null, ocrWorker = null, ocrWorkerLang = null, ocrBusy = false, ocrPending = false;
+    const faDigits = n => String(n).replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+    function loadTesseract() {
+      if (window.Tesseract) return Promise.resolve();
+      return new Promise((res, rej) => {
+        const sc = document.createElement('script');
+        const urls = ['https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js', 'https://unpkg.com/tesseract.js@5/dist/tesseract.min.js'];
+        const tryLoad = i => {
+          if (i >= urls.length) return rej(new Error('بارگذاری کتابخانه OCR ناموفق بود. اتصال اینترنت را بررسی کنید.'));
+          const sc = document.createElement('script');
+          sc.src = urls[i];
+          sc.onload = () => window.Tesseract ? res() : tryLoad(i + 1);
+          sc.onerror = () => { sc.remove(); tryLoad(i + 1); };
+          document.head.appendChild(sc);
+        };
+        tryLoad(0);
+      });
+    }
+    function setOCRProgress(status, p) {
+      document.getElementById('ocr-status').innerText = status;
+      const pct = Math.round((p || 0) * 100);
+      document.getElementById('ocr-percent').innerText = faDigits(pct) + '٪';
+      document.getElementById('ocr-bar').style.width = pct + '%';
+    }
+    function handleOCRUpload(file) {
+      if (!file) return;
+      if (!file.type.startsWith('image/')) { alert('لطفاً یک فایل تصویری انتخاب کنید.'); return; }
+      ocrFile = file;
+      const prev = document.getElementById('ocr-preview');
+      if (prev.src) URL.revokeObjectURL(prev.src);
+      prev.src = URL.createObjectURL(file);
+      document.getElementById('ocr-output').value = '';
+      document.getElementById('ocr-result-wrap').classList.remove('hidden');
+      document.getElementById('ocr-run-btn').disabled = false;
+      document.getElementById('file-ocr').value = '';
+      if (ocrBusy) ocrPending = true; else runOCR();
+    }
+    // Preprocess: upscale small images and convert to grayscale for better accuracy
+    function preprocessImage(file) {
+      return new Promise((res, rej) => {
+        const img = new Image();
+        img.onload = () => {
+          const scale = Math.max(1, Math.min(3, 1800 / Math.max(img.width, img.height)));
+          const c = document.createElement('canvas');
+          c.width = Math.round(img.width * scale); c.height = Math.round(img.height * scale);
+          const ctx = c.getContext('2d');
+          ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+          ctx.imageSmoothingQuality = 'high';
+          ctx.drawImage(img, 0, 0, c.width, c.height);
+          const d = ctx.getImageData(0, 0, c.width, c.height), a = d.data;
+          for (let i = 0; i < a.length; i += 4) { const g = 0.299*a[i] + 0.587*a[i+1] + 0.114*a[i+2]; a[i] = a[i+1] = a[i+2] = g; }
+          ctx.putImageData(d, 0, 0);
+          URL.revokeObjectURL(img.src);
+          res(c);
+        };
+        img.onerror = () => rej(new Error('خواندن تصویر ناموفق بود.'));
+        img.src = URL.createObjectURL(file);
+      });
+    }
+    async function runOCR() {
+      if (!ocrFile || ocrBusy) return;
+      ocrBusy = true;
+      const btn = document.getElementById('ocr-run-btn');
+      const lang = document.getElementById('ocr-lang').value;
+      btn.disabled = true;
+      document.getElementById('ocr-progress-wrap').classList.remove('hidden');
+      setOCRProgress('در حال بارگذاری موتور OCR…', 0);
+      try {
+        await loadTesseract();
+        if (!ocrWorker || ocrWorkerLang !== lang) {
+          if (ocrWorker) { await ocrWorker.terminate(); ocrWorker = null; }
+          ocrWorker = await Tesseract.createWorker(lang, 1, {
+            logger: m => {
+              const labels = { 'recognizing text': 'در حال تشخیص متن…', 'loading language traineddata': 'در حال دریافت داده‌های زبان…', 'initializing api': 'در حال راه‌اندازی…' };
+              setOCRProgress(labels[m.status] || 'در حال پردازش…', m.progress);
+            }
+          });
+          ocrWorkerLang = lang;
+        }
+        const canvas = await preprocessImage(ocrFile);
+        const { data } = await ocrWorker.recognize(canvas);
+        const text = (data.text || '').replace(/[ \t]+\n/g, '\n').replace(/\n{3,}/g, '\n\n').trim();
+        document.getElementById('ocr-output').value = text || '';
+        setOCRProgress(text ? 'استخراج کامل شد ✓' : 'متنی در تصویر پیدا نشد.', 1);
+      } catch (e) {
+        console.error(e);
+        setOCRProgress('خطا: ' + (e.message || e), 0);
+        if (ocrWorker) { try { await ocrWorker.terminate(); } catch (_) {} ocrWorker = null; ocrWorkerLang = null; }
+      } finally {
+        ocrBusy = false; btn.disabled = false;
+        if (ocrPending && ocrFile) { ocrPending = false; runOCR(); }
+      }
+    }
+    async function copyOCR() {
+      const t = document.getElementById('ocr-output').value;
+      if (!t) return;
+      try { await navigator.clipboard.writeText(t); }
+      catch (_) { const ta = document.getElementById('ocr-output'); ta.select(); document.execCommand('copy'); }
+      const b = document.getElementById('ocr-copy-btn'); const o = b.innerText;
+      b.innerText = '✓ کپی شد'; setTimeout(() => b.innerText = o, 1500);
+    }
+    function downloadOCR() {
+      const t = document.getElementById('ocr-output').value;
+      if (!t) return;
+      const blob = new Blob(['\ufeff' + t], { type: 'text/plain;charset=utf-8' });
+      const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+      a.download = 'abzaraf-ocr.txt'; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+    }
+    function resetOCR() {
+      ocrFile = null;
+      document.getElementById('file-ocr').value = '';
+      document.getElementById('ocr-output').value = '';
+      document.getElementById('ocr-result-wrap').classList.add('hidden');
+      document.getElementById('ocr-progress-wrap').classList.add('hidden');
+      document.getElementById('ocr-run-btn').disabled = true;
+    }
+    document.getElementById('ocr-lang').addEventListener('change', () => { if (!ocrFile) return; if (ocrBusy) ocrPending = true; else runOCR(); });
+    (function () {
+      const dz = document.getElementById('dropzone-ocr');
+      ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.add('border-indigo-400'); }));
+      ['dragleave', 'drop'].forEach(ev => dz.addEventListener(ev, e => { e.preventDefault(); dz.classList.remove('border-indigo-400'); }));
+      dz.addEventListener('drop', e => handleOCRUpload(e.dataTransfer.files[0]));
+      document.addEventListener('paste', e => {
+        if (document.getElementById('panel-image-ocr').classList.contains('hidden')) return;
+        const item = [...(e.clipboardData?.items || [])].find(i => i.type.startsWith('image/'));
+        if (item) handleOCRUpload(item.getAsFile());
+      });
+    })();
+
+    // ===== Generic tools =====
+    const T = {}; // per-tool state: {file, blob, name}
+    const $ = id => document.getElementById(id);
+    function loadScript(src) {
+      return new Promise((res, rej) => { if (document.querySelector(`script[src="${src}"]`)) return res();
+        const sc = document.createElement('script'); sc.src = src; sc.onload = res;
+        sc.onerror = () => rej(new Error('بارگذاری کتابخانه ناموفق بود؛ اینترنت را بررسی کنید.')); document.head.appendChild(sc); });
+    }
+    function prog(id, st, p) { $('prog-' + id).classList.remove('hidden'); $('st-' + id).innerText = st;
+      const v = Math.round(Math.max(0, Math.min(1, p || 0)) * 100); $('pc-' + id).innerText = v + '٪'; $('bar-' + id).style.width = v + '%'; }
+    function baseName(f) { return f.name.replace(/\.[^/.]+$/, ''); }
+    function setResult(id, blob, name, origSize) {
+      T[id].blob = blob; T[id].name = name;
+      const diff = origSize ? Math.round((1 - blob.size / origSize) * 100) : null;
+      $('info-' + id).innerText = formatBytes(blob.size) + (diff !== null ? (diff > 0 ? ` (${diff}٪ کاهش)` : ` (${-diff}٪ افزایش)`) : '');
+      $('res-' + id).classList.remove('hidden');
+      return URL.createObjectURL(blob);
+    }
+    function resetTool(id) { T[id] = {}; $('in-' + id).value = ''; $('name-' + id).innerText = '';
+      $('res-' + id).classList.add('hidden'); $('prog-' + id).classList.add('hidden'); $('go-' + id).disabled = true; }
+    function loadImg(file) { return new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i);
+      i.onerror = () => rej(new Error('خواندن تصویر ناموفق بود.')); i.src = URL.createObjectURL(file); }); }
+    function canvasBlob(c, mime, q) { return new Promise(r => c.toBlob(r, mime, q)); }
+    const handlers = {};
+    function setupTool(id, onFile, run) {
+      T[id] = {};
+      const inp = $('in-' + id), dz = $('dz-' + id);
+      const take = async f => { if (!f) return; T[id] = { file: f }; $('name-' + id).innerText = f.name + ' — ' + formatBytes(f.size);
+        $('res-' + id).classList.add('hidden'); $('go-' + id).disabled = false;
+        try { if (onFile) await onFile(f); } catch (e) { prog(id, 'خطا: ' + e.message, 0); } };
+      dz.onclick = () => inp.click(); inp.onchange = () => take(inp.files[0]);
+      ['dragenter', 'dragover'].forEach(ev => dz.addEventListener(ev, e => e.preventDefault()));
+      dz.addEventListener('drop', e => { e.preventDefault(); take(e.dataTransfer.files[0]); });
+      $('go-' + id).onclick = async () => { if (!T[id].file) return; const b = $('go-' + id); b.disabled = true;
+        try { await run(T[id].file); } catch (e) { console.error(e); prog(id, 'خطا: ' + (e.message || e), 0); } finally { b.disabled = false; } };
+      $('dl-' + id).onclick = () => { if (!T[id].blob) return; const a = document.createElement('a');
+        a.href = URL.createObjectURL(T[id].blob); a.download = T[id].name; a.click(); };
+    }
+
+    // Resize
+    setupTool('image-resize', async f => { const i = await loadImg(f); T['image-resize'].img = i;
+      $('rs-w').value = i.naturalWidth; $('rs-h').value = i.naturalHeight; $('rs-pct').value = ''; }, async f => {
+      const i = T['image-resize'].img || await loadImg(f);
+      const w = parseInt($('rs-w').value), h = parseInt($('rs-h').value);
+      if (!(w > 0 && h > 0) || w > 16000 || h > 16000) throw new Error('ابعاد نامعتبر است.');
+      const c = document.createElement('canvas'); c.width = w; c.height = h;
+      const ctx = c.getContext('2d'); ctx.imageSmoothingQuality = 'high'; ctx.drawImage(i, 0, 0, w, h);
+      let mime = ['image/png', 'image/webp', 'image/jpeg'].includes(f.type) ? f.type : 'image/png';
+      const blob = await canvasBlob(c, mime, 0.92); const ext = mime.split('/')[1].replace('jpeg', 'jpg');
+      $('out-image-resize').src = setResult('image-resize', blob, `abzaraf-${baseName(f)}-${w}x${h}.${ext}`);
+    });
+    const rsSync = src => { const i = T['image-resize'] && T['image-resize'].img; if (!i || !$('rs-lock').checked) return;
+      const r = i.naturalHeight / i.naturalWidth;
+      if (src === 'w') $('rs-h').value = Math.max(1, Math.round($('rs-w').value * r)); else $('rs-w').value = Math.max(1, Math.round($('rs-h').value / r)); };
+    $('rs-w').oninput = () => { $('rs-pct').value = ''; rsSync('w'); };
+    $('rs-h').oninput = () => { $('rs-pct').value = ''; rsSync('h'); };
+    $('rs-pct').onchange = () => { const i = T['image-resize'].img, p = parseFloat($('rs-pct').value); if (!i || !p) return;
+      $('rs-w').value = Math.round(i.naturalWidth * p / 100); $('rs-h').value = Math.round(i.naturalHeight * p / 100); };
+
+    // Convert
+    setupTool('image-convert', null, async f => {
+      const i = await loadImg(f), mime = $('cv-fmt').value, q = $('cv-q').value / 100;
+      const c = document.createElement('canvas'); c.width = i.naturalWidth; c.height = i.naturalHeight;
+      const ctx = c.getContext('2d'); if (mime === 'image/jpeg') { ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height); }
+      ctx.drawImage(i, 0, 0);
+      const blob = await canvasBlob(c, mime, q); if (!blob || blob.type !== mime) throw new Error('مرورگر شما از این فرمت پشتیبانی نمی‌کند.');
+      const ext = mime.split('/')[1].replace('jpeg', 'jpg');
+      $('out-image-convert').src = setResult('image-convert', blob, `abzaraf-${baseName(f)}.${ext}`, f.size);
+    });
+
+    // Video compress (MediaRecorder re-encode)
+    setupTool('video-compress', null, f => new Promise((resolve, reject) => {
+      const id = 'video-compress';
+      if (!window.MediaRecorder) return reject(new Error('مرورگر شما از این قابلیت پشتیبانی نمی‌کند.'));
+      const v = document.createElement('video'); v.src = URL.createObjectURL(f); v.playsInline = true; v.muted = false;
+      v.onerror = () => reject(new Error('این فرمت ویدیو در مرورگر قابل پخش نیست.'));
+      v.onloadedmetadata = async () => {
+        try {
+          const maxW = parseInt($('vc-w').value), sc = maxW && v.videoWidth > maxW ? maxW / v.videoWidth : 1;
+          const W = Math.round(v.videoWidth * sc / 2) * 2, H = Math.round(v.videoHeight * sc / 2) * 2;
+          const c = document.createElement('canvas'); c.width = W; c.height = H; const ctx = c.getContext('2d');
+          const stream = c.captureStream(30);
+          try { const ac = new AudioContext(); const srcN = ac.createMediaElementSource(v); const dest = ac.createMediaStreamDestination();
+            srcN.connect(dest); dest.stream.getAudioTracks().forEach(t => stream.addTrack(t)); } catch (_) {}
+          const types = ['video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm', 'video/mp4'];
+          const mime = types.find(t => MediaRecorder.isTypeSupported(t)) || '';
+          const rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: parseInt($('vc-br').value), audioBitsPerSecond: 96000 });
+          const chunks = []; rec.ondataavailable = e => e.data.size && chunks.push(e.data);
+          rec.onstop = () => { const type = (mime || 'video/webm').split(';')[0]; const blob = new Blob(chunks, { type });
+            $('out-' + id).src = setResult(id, blob, `abzaraf-${baseName(f)}-compressed.${type.includes('mp4') ? 'mp4' : 'webm'}`, f.size);
+            prog(id, 'انجام شد ✓', 1); resolve(); };
+          let raf; const draw = () => { ctx.drawImage(v, 0, 0, W, H); prog(id, 'در حال فشرده‌سازی… (ویدیو را نبندید)', v.currentTime / v.duration); raf = requestAnimationFrame(draw); };
+          v.onended = () => { cancelAnimationFrame(raf); setTimeout(() => rec.stop(), 200); };
+          rec.start(1000); await v.play(); draw();
+        } catch (e) { reject(e); }
+      };
+    }));
+
+    // Audio extract -> WAV
+    function encodeWAV(buf) {
+      const ch = buf.numberOfChannels, sr = buf.sampleRate, len = buf.length, ab = new ArrayBuffer(44 + len * ch * 2), dv = new DataView(ab);
+      const ws = (o, s) => { for (let i = 0; i < s.length; i++) dv.setUint8(o + i, s.charCodeAt(i)); };
+      ws(0, 'RIFF'); dv.setUint32(4, 36 + len * ch * 2, true); ws(8, 'WAVE'); ws(12, 'fmt '); dv.setUint32(16, 16, true);
+      dv.setUint16(20, 1, true); dv.setUint16(22, ch, true); dv.setUint32(24, sr, true); dv.setUint32(28, sr * ch * 2, true);
+      dv.setUint16(32, ch * 2, true); dv.setUint16(34, 16, true); ws(36, 'data'); dv.setUint32(40, len * ch * 2, true);
+      const data = []; for (let c = 0; c < ch; c++) data.push(buf.getChannelData(c));
+      let o = 44; for (let i = 0; i < len; i++) for (let c = 0; c < ch; c++) { const s = Math.max(-1, Math.min(1, data[c][i])); dv.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true); o += 2; }
+      return new Blob([ab], { type: 'audio/wav' });
+    }
+    setupTool('audio-extract', null, async f => {
+      const id = 'audio-extract'; prog(id, 'در حال خواندن فایل…', 0.2);
+      const ab = await f.arrayBuffer(); const ac = new (window.AudioContext || window.webkitAudioContext)();
+      prog(id, 'در حال جداسازی صدا…', 0.5);
+      let buf; try { buf = await ac.decodeAudioData(ab); } catch (_) { throw new Error('صدایی در این فایل پیدا نشد یا فرمت پشتیبانی نمی‌شود.'); }
+      prog(id, 'در حال ساخت فایل صوتی…', 0.85);
+      const blob = encodeWAV(buf); ac.close();
+      $('out-' + id).src = setResult(id, blob, `abzaraf-${baseName(f)}.wav`); prog(id, 'انجام شد ✓', 1);
+    });
+
+    // PDF compress
+    setupTool('pdf-compress', null, async f => {
+      const id = 'pdf-compress'; prog(id, 'در حال بارگذاری کتابخانه‌ها…', 0);
+      await loadScript('https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.min.js');
+      await loadScript('https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js');
+      pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@3.11.174/build/pdf.worker.min.js';
+      const [q, scale] = $('pc-q').value.split('|').map(Number);
+      const pdf = await pdfjsLib.getDocument({ data: await f.arrayBuffer() }).promise;
+      let out = null;
+      for (let p = 1; p <= pdf.numPages; p++) {
+        prog(id, `در حال پردازش صفحه ${p} از ${pdf.numPages}…`, (p - 1) / pdf.numPages);
+        const page = await pdf.getPage(p), vp1 = page.getViewport({ scale: 1 }), vp = page.getViewport({ scale });
+        const c = document.createElement('canvas'); c.width = vp.width; c.height = vp.height; const ctx = c.getContext('2d');
+        ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, c.width, c.height);
+        await page.render({ canvasContext: ctx, viewport: vp }).promise;
+        const img = c.toDataURL('image/jpeg', q), o = vp1.width > vp1.height ? 'l' : 'p';
+        if (!out) out = new jspdf.jsPDF({ orientation: o, unit: 'pt', format: [vp1.width, vp1.height] });
+        else out.addPage([vp1.width, vp1.height], o);
+        out.addImage(img, 'JPEG', 0, 0, vp1.width, vp1.height);
+      }
+      const blob = out.output('blob');
+      setResult(id, blob, `abzaraf-${baseName(f)}-compressed.pdf`, f.size); prog(id, 'انجام شد ✓', 1);
+    });
+
+    // Initialize on ready
+    window.addEventListener('DOMContentLoaded', () => {
+      generateQR();
+    });
+  </script>
+</body>
 </html>
